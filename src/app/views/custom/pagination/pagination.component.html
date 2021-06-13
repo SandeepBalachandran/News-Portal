@@ -1,0 +1,41 @@
+<ul class="pagination">
+    <li class="pagination-first page-item" *ngIf="boundaryLinks && page!==0">
+        <a class="page-link" (click)="selectPage(1)">
+            <ng-container>
+                {{firstText}}
+            </ng-container>
+        </a>
+    </li>
+
+    <li class="pagination-prev page-item" *ngIf="directionLinks  && page!==0">
+        <a class="page-link" (click)="selectPage(page - 1)">
+            <ng-container>
+                {{previousText}}
+            </ng-container>
+        </a>
+    </li>
+
+    <li *ngFor="let pg of pagesArray" class="pagination-page page-item">
+        <a class="page-link" (click)="selectPage(pg)">
+            <ng-container>
+                {{pg}}
+            </ng-container>
+        </a>
+    </li>
+
+    <li class="pagination-next page-item" *ngIf="directionLinks && page!==pagesArray.length">
+        <a class="page-link" (click)="selectPage(page + 1)">
+            <ng-container>
+                {{nextText}}
+            </ng-container>
+        </a>
+    </li>
+
+    <li class="pagination-last page-item" *ngIf="boundaryLinks && page!==pagesArray.length">
+        <a class="page-link" (click)="selectPage(pagesArray.length, $event)">
+            <ng-container>
+                {{lastText}}
+            </ng-container>
+        </a>
+    </li>
+</ul>

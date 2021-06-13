@@ -1,0 +1,67 @@
+<app-header></app-header>
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="row">
+                <ng-container *ngIf="sections.length>0">
+                    <div class="card-container col-md-12">
+                        <div class="card" [ngClass]="{'active-section': selectedSection == 'All'}"
+                            (click)="onSectionClick({display_name:'All',section:'All'})">
+                            All
+                        </div>
+                        <ng-container *ngFor="let item of sections">
+                            <div class="card" [ngClass]="{'active-section': selectedSection == item.display_name}"
+                                (click)="onSectionClick(item)">
+                                {{item.display_name}}
+                            </div>
+                        </ng-container>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+                <ng-container *ngIf="articles.length>0;else nodata">
+                    <div class="article-container col-md-12">
+                        <div class="content">
+                            <div class="container">
+                                <div class="row">
+                                    <ng-container *ngFor="let item of articles">
+                                        <div class="col-xs-12 col-sm-4 ">
+                                            <div class="card article">
+                                                <a class="img-card">
+                                                    <img [src]="getThumbnail(item.multimedia)" alt="thumbnail" />
+                                                </a>
+                                                <div class="card-content">
+                                                    <h4 class="card-title" (click)="goToArticle(item)">
+                                                        {{item.title}}
+                                                    </h4>
+                                                    <p class="">
+                                                        {{item.abstract}}
+                                                    </p>
+                                                </div>
+                                                <div class="card-read-more" style="z-index: 9999;">
+                                                    <a (click)="remove(item)" class="btn btn-link btn-block">
+                                                        Remove from list
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-template #nodata>
+                    <img src="https://image.freepik.com/free-vector/no-data-concept-illustration_114360-616.jpg">
+                </ng-template>
+                <div class="col-md-12">
+                    <app-pagination *ngIf="articleLength > limit" [page]="page" [totalItems]="articleLength"
+                        [itemsPerPage]="limit" (pageChanged)="onPaginationChange($event)"></app-pagination>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

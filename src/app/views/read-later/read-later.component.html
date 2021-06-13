@@ -29,9 +29,7 @@
                                     <ng-container *ngFor="let item of articles">
                                         <div class="col-xs-12 col-sm-4 ">
                                             <div class="card article">
-                                                <a class="img-card">
-                                                    <img [src]="getThumbnail(item.multimedia)" alt="thumbnail" />
-                                                </a>
+                                               
                                                 <div class="card-content">
                                                     <h4 class="card-title" (click)="goToArticle(item)">
                                                         {{item.title}}

@@ -33,7 +33,7 @@ export class AuthComponent implements OnInit {
 
   initRegForm(): void {
     this.signupform = this.formBuilder.group({
-      username: ['1', [Validators.required, this.custom.charValidator]],
+      username: ['', [Validators.required, this.custom.charValidator]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(20), this.custom.charValidator]],
     });
@@ -102,11 +102,11 @@ export class AuthComponent implements OnInit {
         this.toastr.error('Error', 'Already Existing email');
       } else {
         this.pushDataToStorage(userDetails, username, email, password);
-        this.toastr.success('Saved succesfully', 'Done');
+        this.toastr.success('Saved succesfully. Please login', 'Done');
       }
     } else {
       this.pushDataToStorage([], username, email, password);
-      this.toastr.success('Saved succesfully', 'Done');
+      this.toastr.success('Saved succesfully. Please login', 'Done');
     }
 
   }

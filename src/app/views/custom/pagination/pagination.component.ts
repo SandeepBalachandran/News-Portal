@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
-import { NewsService } from 'src/services/news.service';
+
 
 @Component({
     selector: 'app-pagination',
@@ -23,7 +23,7 @@ export class PaginationComponent implements OnInit, OnChanges {
 
 
 
-    constructor(private newsService: NewsService) { }
+    constructor() { }
 
     ngOnInit(): void {
     }

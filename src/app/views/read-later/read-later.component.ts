@@ -123,7 +123,6 @@ export class ReadlaterComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        // this.articleSubscription$.unsubscribe();
-        // this.sectionSubscription$.unsubscribe();
+        this.sectionSubscription$.unsubscribe();
     }
 }
